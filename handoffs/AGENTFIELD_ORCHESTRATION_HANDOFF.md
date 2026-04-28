@@ -43,12 +43,11 @@ paths to keep v1 small and concrete. But because claudeia and openclaw will
 consume the same primitives in v2, **five extensibility decisions must be
 made in v1** so v2 extraction is non-breaking. These are mandatory in Phase A.
 
-### Decision needed before Phase A starts
+### Confirmed: canonical core home is openclaw
 
-**Where will the shared core live in v2?** Recommended: a new
-`agent-orchestration/` subdirectory inside the **openclaw** repo, consumed
-by apexcfo and claudeia via git submodule or a small editable pip install.
-Reasons:
+The shared core for v2 will live at **`openclaw/agent-orchestration/`**,
+consumed by apexcfo and claudeia via git submodule or a small editable pip
+install. This decision is locked in (confirmed 2026-04-28). Reasons:
 - openclaw is already the orchestration platform; the schemas conceptually
   belong there
 - claudeia and openclaw already share documentation, so the path pattern exists
@@ -56,7 +55,7 @@ Reasons:
   in is harder
 
 This decision affects **only naming and prose** in v1; no v1 paths change.
-Confirm or override before Phase A begins.
+The executing session does not need to revisit this.
 
 ### The five extensibility decisions (apply in Phase A)
 
@@ -313,13 +312,13 @@ Original spec §11 verbatim, plus:
 
 ## Open questions for the executing session
 
-1. **Canonical core location.** Confirm openclaw is the right home for the
-   shared core in v2, or specify an alternative. This is a naming/prose
-   decision in v1 only — does not block Phase A.
-2. **`read_first` paths.** The original spec mentions `apexcfo/PROCESS_HEALTH.md`
+1. **`read_first` paths.** The original spec mentions `apexcfo/PROCESS_HEALTH.md`
    and `memory/ops-playbook.md` in the manifest example. Confirm those paths
    still exist; update the example if any have moved. Do not change schemas
    based on path drift.
-3. **Hard gate names.** Confirm the apexcfo v1 hard gates are
-   `financial_parity`, `rls_auth`, `pe_audit`. If a gate is named differently
-   in existing process docs, prefer the existing name.
+2. **Hard gate names.** Confirm the apexcfo v1 hard gates are
+   `financial_parity`, `rls_auth`, `pe_auditability`. If a gate is named
+   differently in existing process docs, prefer the existing name.
+
+_(Canonical core location is now confirmed as `openclaw/agent-orchestration/`
+and is no longer an open question.)_
